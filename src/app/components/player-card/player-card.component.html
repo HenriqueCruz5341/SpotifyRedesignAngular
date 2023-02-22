@@ -1,0 +1,13 @@
+<div class="container card p-10">
+  <div class="image" [style.background-image]="'url(' + musica?.getAlbum()?.imageUrl + ')'"></div>
+  <div class="controles">
+
+    <span>{{ musica?.getTitulo() }}</span>
+    <div class="botoes mt-1">
+      <fa-icon [icon]="anteriorIcone" (click)="voltarMusica()"></fa-icon>
+      <fa-icon *ngIf="musica?.getIsPlaying() === false" [icon]="playIcone" (click)="continuarMusica()"></fa-icon>
+      <fa-icon *ngIf="musica?.getIsPlaying() === true" [icon]="pauseIcone" (click)="pausarMusica()"></fa-icon>
+      <fa-icon [icon]="proximoIcone" (click)="proximaMusica()"></fa-icon>
+    </div>
+  </div>
+</div>

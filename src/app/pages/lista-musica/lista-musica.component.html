@@ -1,0 +1,39 @@
+<div class="lista">
+  <div class="mt-4">
+    <app-banner [imagemUrl]="bannerImagem" [texto]="bannerTexto"></app-banner>
+  </div>
+
+  <div class="titulo-bg mt-7">
+    {{ title }}
+  </div>
+
+  <table class="table mt-3">
+    <thead>
+      <tr>
+        <th class="w-5">#</th>
+        <th class="w-35">Título</th>
+        <th class="w-30">Artista</th>
+        <th class="w-20">Álbum</th>
+        <th class="w-10 direita">Duração</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let musica of musicas; let i = index" (click)="executarMusica(musica)"
+        [class.executando]="musica.getId() === musicaAtual?.getId()">
+        <td>
+          <span>{{ i + 1}}</span>
+          <fa-icon class="play" [icon]="playIcone"></fa-icon>
+          <fa-icon class="volume" [icon]="volumeIcone"></fa-icon>
+        </td>
+        <td>{{ musica.getTitulo() }}</td>
+        <td>{{ obterArtistas(musica) }}</td>
+        <td>{{ musica.getAlbum().nome }}</td>
+        <td class="direita">{{ musica.getTempoFormatado() }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<app-painel-direito class="painel-direito">
+
+</app-painel-direito>
